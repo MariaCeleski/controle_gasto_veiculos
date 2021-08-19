@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>controle de gasto veiculos</title>
+  <h3>CONTROLE DE GASTOS COM VEÍCULO</h3>
+</head>
+
+<body>
+  Data <input type="datetime-local" id="datetime_local" name="datetime_local" required><br><br>
+  Veículo<input tipe="number" id="veiculos" required /><br /><br />
+  Placa<input tipe="number" id="placas" /><br /><br />
+  Motorista<input tipe="number" id="motoristas" /><br /><br />
+  Local de destino<input tipe="number" id="destinos" /><br /><br />
+  Km iniciais<input tipe="number" id="kminiciais" /><br /><br />
+  Km finais<input tipe="number" id="kmfinais" /><br /><br />
+  Quantidade em litros<input tipe="number" id="QtdadeLitros" /><br /><br />
+  Tipo de Produto<input tipe="text" id="combustivel" placeholder="Gas/GNV/Etanol/Diesel/Óleo" /><br /><br />
+  Preço<input tipe="number" id="preco" /><br /><br />
+
+  <button type="button" class="valorTotal" onclick="resultado()">
+    Resumo de gastos</button>
+  <button type="button" class="valorTotal" onclick="resultado1()">
+    Descrição do veículo</button><br /><br />
+  <div id="divSaida"></div>
+  <hr>
+  <div id="divSaida1"></div>
+
+
+  <hr>
+</body>
+<script>
+
+  var data = document.getElementById("datetime_local");
+  var veiculo = document.getElementById("veiculos");
+  var placa = document.getElementById("placas");
+  var motorista = document.getElementById("motoristas");
+  var destino = document.getElementById("destinos");
+  var kminicial = document.getElementById("kminiciais");
+  var kmfinal = document.getElementById("kmfinais");
+  var qtidadeLitros = document.getElementById("QtdadeLitros");
+  var tipoCombustivel = document.getElementById("combustivel");
+  var precoCombustivel = document.getElementById("preco");
+  var saida = document.getElementById("divSaida");
+  var saida1 = document.getElementById("divSaida1");
+
+
+  function resultado() {
+    saida.innerHTML =
+      "A distância percorrida foi de: " +
+      (kmfinal.value - kminicial.value).toFixed(2) + "km<br>" +
+      "Fez: " +
+      ((kmfinal.value - kminicial.value) / qtidadeLitros.value).toFixed(2) +
+      " km/litro<br>" +
+      "Despesa total é de R$ " +
+      (qtidadeLitros.value * precoCombustivel.value).toFixed(2);
+  }
+
+  function resultado1() {
+    console.log(data)
+    saida1.innerHTML += data.value + "<br>" + "Veículo cadastrado:" + veiculo.value + "<br>" + "Placa do veículo: " + placa.value + "<br>" + "Motorista: " + motorista.value + "<br>" + "Destino: " + destino.value
+  }
+</script>
+
+</html>
